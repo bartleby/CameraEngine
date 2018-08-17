@@ -25,24 +25,24 @@ public enum CameraEngineSessionPreset {
     
     public func foundationPreset() -> String {
         switch self {
-        case .photo: return AVCaptureSessionPresetPhoto
-        case .high: return AVCaptureSessionPresetHigh
-        case .medium: return AVCaptureSessionPresetMedium
-        case .low: return AVCaptureSessionPresetLow
-        case .res352x288: return AVCaptureSessionPreset352x288
-        case .res640x480: return AVCaptureSessionPreset640x480
-        case .res1280x720: return AVCaptureSessionPreset1280x720
-        case .res1920x1080: return AVCaptureSessionPreset1920x1080
+        case .photo: return AVCaptureSession.Preset.photo.rawValue
+        case .high: return AVCaptureSession.Preset.high.rawValue
+        case .medium: return AVCaptureSession.Preset.medium.rawValue
+        case .low: return AVCaptureSession.Preset.low.rawValue
+        case .res352x288: return AVCaptureSession.Preset.cif352x288.rawValue
+        case .res640x480: return AVCaptureSession.Preset.vga640x480.rawValue
+        case .res1280x720: return AVCaptureSession.Preset.hd1280x720.rawValue
+        case .res1920x1080: return AVCaptureSession.Preset.hd1920x1080.rawValue
         case .res3840x2160:
             if #available(iOS 9.0, *) {
-                return AVCaptureSessionPreset3840x2160
+                return AVCaptureSession.Preset.hd4K3840x2160.rawValue
             }
             else {
-                return AVCaptureSessionPresetPhoto
+                return AVCaptureSession.Preset.photo.rawValue
             }
-        case .frame960x540: return AVCaptureSessionPresetiFrame960x540
-        case .frame1280x720: return AVCaptureSessionPresetiFrame1280x720
-        default: return AVCaptureSessionPresetPhoto
+        case .frame960x540: return AVCaptureSession.Preset.iFrame960x540.rawValue
+        case .frame1280x720: return AVCaptureSession.Preset.iFrame1280x720.rawValue
+        default: return AVCaptureSession.Preset.photo.rawValue
         }
     }
     
@@ -79,8 +79,8 @@ public class CameraEngine: NSObject {
     
     var sessionQueue: DispatchQueue = DispatchQueue(label: cameraEngineSessionQueueIdentifier)
     
-    private var _torchMode: AVCaptureTorchMode = .off
-    public var torchMode: AVCaptureTorchMode! {
+    private var _torchMode: AVCaptureDevice.TorchMode = .off
+    public var torchMode: AVCaptureDevice.TorchMode! {
         get {
             return _torchMode
         }
@@ -90,8 +90,8 @@ public class CameraEngine: NSObject {
         }
     }
     
-    private var _flashMode: AVCaptureFlashMode = .off
-    public var flashMode: AVCaptureFlashMode! {
+    private var _flashMode: AVCaptureDevice.FlashMode = .off
+    public var flashMode: AVCaptureDevice.FlashMode! {
         get {
             return _flashMode
         }
@@ -103,7 +103,7 @@ public class CameraEngine: NSObject {
     
     public lazy var previewLayer: AVCaptureVideoPreviewLayer! = {
         let layer =  AVCaptureVideoPreviewLayer(session: self.session)
-        layer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         return layer
     }()
     
@@ -113,9 +113,9 @@ public class CameraEngine: NSObject {
             return self._sessionPresset
         }
         set {
-            if self.session.canSetSessionPreset(newValue.foundationPreset()) {
+            if self.session.canSetSessionPreset(AVCaptureSession.Preset(rawValue: newValue.foundationPreset())) {
                 self._sessionPresset = newValue
-                self.session.sessionPreset = self._sessionPresset.foundationPreset()
+                self.session.sessionPreset = AVCaptureSession.Preset(rawValue: self._sessionPresset.foundationPreset())
             }
             else {
                 fatalError("[CameraEngine] session presset : [\(newValue.foundationPreset())] uncompatible with the current device")
@@ -271,7 +271,7 @@ public class CameraEngine: NSObject {
     }
     
     public class func askAuthorization() -> AVAuthorizationStatus {
-        return AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        return AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
     }
     
     //MARK: Session management
@@ -300,7 +300,7 @@ public class CameraEngine: NSObject {
 				UIDevice.current.beginGeneratingDeviceOrientationNotifications()
 			}
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UIDeviceOrientationDidChange, object: nil, queue: OperationQueue.main) { (_) -> Void in
-                self.previewLayer.connection.videoOrientation = AVCaptureVideoOrientation.orientationFromUIDeviceOrientation(UIDevice.current.orientation)
+                self.previewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.orientationFromUIDeviceOrientation(UIDevice.current.orientation)
             }
         }
         else {
@@ -311,7 +311,7 @@ public class CameraEngine: NSObject {
         }
     }
     
-    public func changeCurrentDevice(_ position: AVCaptureDevicePosition) {
+    public func changeCurrentDevice(_ position: AVCaptureDevice.Position) {
         self.cameraDevice.changeCurrentDevice(position)
         self.configureInputDevice()
     }
@@ -329,7 +329,7 @@ public class CameraEngine: NSObject {
     
     public func compatibleSessionPresset() -> [CameraEngineSessionPreset] {
         return CameraEngineSessionPreset.availablePresset().filter {
-            return self.session.canSetSessionPreset($0.foundationPreset())
+            return self.session.canSetSessionPreset(AVCaptureSession.Preset(rawValue: $0.foundationPreset()))
         }
     }
     
@@ -341,7 +341,7 @@ public class CameraEngine: NSObject {
         return CameraEngineCaptureOutputDetection.availableDetection()
     }
     
-    private func configureFlash(_ mode: AVCaptureFlashMode) {
+    private func configureFlash(_ mode: AVCaptureDevice.FlashMode) {
         if let currentDevice = self.cameraDevice.currentDevice, currentDevice.isFlashAvailable && self.capturePhotoSettings.flashMode != mode {
             self.capturePhotoSettings.flashMode = mode
         }
@@ -357,7 +357,7 @@ public class CameraEngine: NSObject {
 //        }
     }
     
-    private func configureTorch(_ mode: AVCaptureTorchMode) {
+    private func configureTorch(_ mode: AVCaptureDevice.TorchMode) {
         if let currentDevice = self.cameraDevice.currentDevice, currentDevice.isTorchAvailable && currentDevice.torchMode != mode {
             do {
                 try currentDevice.lockForConfiguration()
@@ -376,7 +376,7 @@ public class CameraEngine: NSObject {
         }
     }
     
-    public var currentDevice: AVCaptureDevicePosition {
+    public var currentDevice: AVCaptureDevice.Position {
         get {
             return self.cameraDevice.currentPosition
         }
@@ -423,25 +423,25 @@ public extension CameraEngine {
 			let performFocus = currentDevice.isFocusModeSupported(.autoFocus) && currentDevice.isFocusPointOfInterestSupported
 			let performExposure = currentDevice.isExposureModeSupported(.autoExpose) && currentDevice.isExposurePointOfInterestSupported
             if performFocus || performExposure {
-                let focusPoint = self.previewLayer.captureDevicePointOfInterest(for: atPoint)
+                let focusPoint = self.previewLayer.captureDevicePointConverted(fromLayerPoint: atPoint)
                 do {
                     try currentDevice.lockForConfiguration()
 					
 					if performFocus {
 						currentDevice.focusPointOfInterest = CGPoint(x: focusPoint.x, y: focusPoint.y)
-						if currentDevice.focusMode == AVCaptureFocusMode.locked {
-							currentDevice.focusMode = AVCaptureFocusMode.autoFocus
+						if currentDevice.focusMode == AVCaptureDevice.FocusMode.locked {
+							currentDevice.focusMode = AVCaptureDevice.FocusMode.autoFocus
 						} else {
-							currentDevice.focusMode = AVCaptureFocusMode.continuousAutoFocus
+							currentDevice.focusMode = AVCaptureDevice.FocusMode.continuousAutoFocus
 						}
 					}
 					
                     if performExposure {
 						currentDevice.exposurePointOfInterest = CGPoint(x: focusPoint.x, y: focusPoint.y)
-                        if currentDevice.exposureMode == AVCaptureExposureMode.locked {
-                            currentDevice.exposureMode = AVCaptureExposureMode.autoExpose
+                        if currentDevice.exposureMode == AVCaptureDevice.ExposureMode.locked {
+                            currentDevice.exposureMode = AVCaptureDevice.ExposureMode.autoExpose
                         } else {
-                            currentDevice.exposureMode = AVCaptureExposureMode.continuousAutoExposure;
+                            currentDevice.exposureMode = AVCaptureDevice.ExposureMode.continuousAutoExposure;
                         }
                     }
                     currentDevice.unlockForConfiguration()

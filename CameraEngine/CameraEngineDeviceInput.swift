@@ -27,8 +27,8 @@ class CameraEngineDeviceInput {
                 session.removeInput(currentDeviceInput)
             }
             self.cameraDeviceInput = cameraInput
-            if session.canAddInput(self.cameraDeviceInput) {
-                session.addInput(self.cameraDeviceInput)
+            if session.canAddInput(self.cameraDeviceInput!) {
+                session.addInput(self.cameraDeviceInput!)
             }
             else {
                 throw CameraEngineDeviceInputErrorType.unableToAddCamera
@@ -42,8 +42,8 @@ class CameraEngineDeviceInput {
             return
         }
         try self.micDeviceInput = AVCaptureDeviceInput(device: device)
-        if session.canAddInput(self.micDeviceInput) {
-            session.addInput(self.micDeviceInput)
+        if session.canAddInput(self.micDeviceInput!) {
+            session.addInput(self.micDeviceInput!)
         }
         else {
             throw CameraEngineDeviceInputErrorType.unableToAddMic

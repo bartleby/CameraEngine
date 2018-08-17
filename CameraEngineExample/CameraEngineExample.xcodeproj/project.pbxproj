@@ -12,7 +12,15 @@
 		BB3B05D81D8C242A00165E2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3B05D61D8C242A00165E2C /* Main.storyboard */; };
 		BB3B05DA1D8C242A00165E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3B05D91D8C242A00165E2C /* Assets.xcassets */; };
 		BB3B05DD1D8C242A00165E2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3B05DB1D8C242A00165E2C /* LaunchScreen.storyboard */; };
-		BB9DFAD61D8C4D95001E7B35 /* CameraEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9DFAD51D8C4D95001E7B35 /* CameraEngine.framework */; };
+		CC74071F2126DA91007AC663 /* CameraEngineCaptureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7407152126DA91007AC663 /* CameraEngineCaptureOutput.swift */; };
+		CC7407202126DA91007AC663 /* CameraEngineDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7407162126DA91007AC663 /* CameraEngineDevice.swift */; };
+		CC7407212126DA91007AC663 /* CameraEngineFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7407172126DA91007AC663 /* CameraEngineFileManager.swift */; };
+		CC7407222126DA91007AC663 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7407182126DA91007AC663 /* CameraEngine.swift */; };
+		CC7407232126DA91007AC663 /* CameraEngineVideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7407192126DA91007AC663 /* CameraEngineVideoEncoder.swift */; };
+		CC7407242126DA91007AC663 /* CameraEngineMetadataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74071B2126DA91007AC663 /* CameraEngineMetadataOutput.swift */; };
+		CC7407252126DA91007AC663 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC74071C2126DA91007AC663 /* Info.plist */; };
+		CC7407262126DA91007AC663 /* CameraEngineGifEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74071D2126DA91007AC663 /* CameraEngineGifEncoder.swift */; };
+		CC7407272126DA91007AC663 /* CameraEngineDeviceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74071E2126DA91007AC663 /* CameraEngineDeviceInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +31,16 @@
 		BB3B05D91D8C242A00165E2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB3B05DC1D8C242A00165E2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB3B05DE1D8C242A00165E2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB9DFAD51D8C4D95001E7B35 /* CameraEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CameraEngine.framework; path = "../../Library/Developer/Xcode/DerivedData/CameraEngineExample-giwblicspnhgxffyrnhtqbvmjrgc/Build/Products/Debug-iphoneos/CameraEngine.framework"; sourceTree = "<group>"; };
+		CC7407152126DA91007AC663 /* CameraEngineCaptureOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineCaptureOutput.swift; sourceTree = "<group>"; };
+		CC7407162126DA91007AC663 /* CameraEngineDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineDevice.swift; sourceTree = "<group>"; };
+		CC7407172126DA91007AC663 /* CameraEngineFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineFileManager.swift; sourceTree = "<group>"; };
+		CC7407182126DA91007AC663 /* CameraEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
+		CC7407192126DA91007AC663 /* CameraEngineVideoEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineVideoEncoder.swift; sourceTree = "<group>"; };
+		CC74071A2126DA91007AC663 /* CameraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraEngine.h; sourceTree = "<group>"; };
+		CC74071B2126DA91007AC663 /* CameraEngineMetadataOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineMetadataOutput.swift; sourceTree = "<group>"; };
+		CC74071C2126DA91007AC663 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC74071D2126DA91007AC663 /* CameraEngineGifEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineGifEncoder.swift; sourceTree = "<group>"; };
+		CC74071E2126DA91007AC663 /* CameraEngineDeviceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineDeviceInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +48,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB9DFAD61D8C4D95001E7B35 /* CameraEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +74,7 @@
 		BB3B05D11D8C242A00165E2C /* CameraEngineExample */ = {
 			isa = PBXGroup;
 			children = (
+				CC7407142126DA90007AC663 /* CameraEngine */,
 				BB3B05D21D8C242A00165E2C /* AppDelegate.swift */,
 				BB3B05D41D8C242A00165E2C /* ViewController.swift */,
 				BB3B05D61D8C242A00165E2C /* Main.storyboard */,
@@ -71,9 +88,26 @@
 		BB9DFAD41D8C4D95001E7B35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BB9DFAD51D8C4D95001E7B35 /* CameraEngine.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC7407142126DA90007AC663 /* CameraEngine */ = {
+			isa = PBXGroup;
+			children = (
+				CC7407152126DA91007AC663 /* CameraEngineCaptureOutput.swift */,
+				CC7407162126DA91007AC663 /* CameraEngineDevice.swift */,
+				CC7407172126DA91007AC663 /* CameraEngineFileManager.swift */,
+				CC7407182126DA91007AC663 /* CameraEngine.swift */,
+				CC7407192126DA91007AC663 /* CameraEngineVideoEncoder.swift */,
+				CC74071A2126DA91007AC663 /* CameraEngine.h */,
+				CC74071B2126DA91007AC663 /* CameraEngineMetadataOutput.swift */,
+				CC74071C2126DA91007AC663 /* Info.plist */,
+				CC74071D2126DA91007AC663 /* CameraEngineGifEncoder.swift */,
+				CC74071E2126DA91007AC663 /* CameraEngineDeviceInput.swift */,
+			);
+			name = CameraEngine;
+			path = ../../CameraEngine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,12 +137,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Remi Robert";
 				TargetAttributes = {
 					BB3B05CE1D8C242A00165E2C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 44Q2J6374R;
+						DevelopmentTeam = ZC9UES3W9Y;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,6 +170,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC7407252126DA91007AC663 /* Info.plist in Resources */,
 				BB3B05DD1D8C242A00165E2C /* LaunchScreen.storyboard in Resources */,
 				BB3B05DA1D8C242A00165E2C /* Assets.xcassets in Resources */,
 				BB3B05D81D8C242A00165E2C /* Main.storyboard in Resources */,
@@ -149,8 +184,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC7407242126DA91007AC663 /* CameraEngineMetadataOutput.swift in Sources */,
 				BB3B05D51D8C242A00165E2C /* ViewController.swift in Sources */,
 				BB3B05D31D8C242A00165E2C /* AppDelegate.swift in Sources */,
+				CC7407272126DA91007AC663 /* CameraEngineDeviceInput.swift in Sources */,
+				CC7407222126DA91007AC663 /* CameraEngine.swift in Sources */,
+				CC7407202126DA91007AC663 /* CameraEngineDevice.swift in Sources */,
+				CC7407232126DA91007AC663 /* CameraEngineVideoEncoder.swift in Sources */,
+				CC7407212126DA91007AC663 /* CameraEngineFileManager.swift in Sources */,
+				CC7407262126DA91007AC663 /* CameraEngineGifEncoder.swift in Sources */,
+				CC74071F2126DA91007AC663 /* CameraEngineCaptureOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,15 +228,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -235,15 +287,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -273,12 +334,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 44Q2J6374R;
+				DEVELOPMENT_TEAM = ZC9UES3W9Y;
 				INFOPLIST_FILE = CameraEngineExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.CameraEngineExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -286,12 +348,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 44Q2J6374R;
+				DEVELOPMENT_TEAM = ZC9UES3W9Y;
 				INFOPLIST_FILE = CameraEngineExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.CameraEngineExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

@@ -14,11 +14,11 @@ public enum CameraEngineCameraFocus {
     case autoFocus
     case continuousAutoFocus
     
-    func foundationFocus() -> AVCaptureFocusMode {
+    func foundationFocus() -> AVCaptureDevice.FocusMode {
         switch self {
-        case .locked: return AVCaptureFocusMode.locked
-        case .autoFocus: return AVCaptureFocusMode.autoFocus
-        case .continuousAutoFocus: return AVCaptureFocusMode.continuousAutoFocus
+        case .locked: return AVCaptureDevice.FocusMode.locked
+        case .autoFocus: return AVCaptureDevice.FocusMode.autoFocus
+        case .continuousAutoFocus: return AVCaptureDevice.FocusMode.continuousAutoFocus
         }
     }
     
@@ -45,7 +45,7 @@ class CameraEngineDevice {
     private var frontCameraDevice: AVCaptureDevice!
     var micCameraDevice: AVCaptureDevice!
     var currentDevice: AVCaptureDevice?
-    var currentPosition: AVCaptureDevicePosition = .unspecified
+    var currentPosition: AVCaptureDevice.Position = .unspecified
     
     func changeCameraFocusMode(_ focusMode: CameraEngineCameraFocus) {
         if let currentDevice = self.currentDevice {
@@ -80,7 +80,7 @@ class CameraEngineDevice {
         return zoom
     }
     
-    func changeCurrentDevice(_ position: AVCaptureDevicePosition) {
+    func changeCurrentDevice(_ position: AVCaptureDevice.Position) {
         self.currentPosition = position
         switch position {
         case .back: self.currentDevice = self.backCameraDevice
@@ -90,13 +90,13 @@ class CameraEngineDevice {
     }
     
     private func configureDeviceCamera() {
-        self.backCameraDevice = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceType.builtInDuoCamera, AVCaptureDeviceType.builtInTelephotoCamera, AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.back).devices.first
+        self.backCameraDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera, AVCaptureDevice.DeviceType.builtInTelephotoCamera, AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back).devices.first
         
-        self.frontCameraDevice = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceType.builtInDuoCamera, AVCaptureDeviceType.builtInTelephotoCamera, AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.front).devices.first
+        self.frontCameraDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera, AVCaptureDevice.DeviceType.builtInTelephotoCamera, AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.front).devices.first
     }
     
     private func configureDeviceMic() {
-        self.micCameraDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+        self.micCameraDevice = AVCaptureDevice.default(for: AVMediaType.audio)
     }
     
     init() {
