@@ -11,6 +11,8 @@
 [![codebeat badge](https://codebeat.co/badges/fcf16e2f-fe4e-4d4d-abb4-968e71c7d9f2)](https://codebeat.co/projects/github-com-remirobert-cameraengine)&nbsp;
 [![Donate](http://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2MUNQRB8KTSM8 "Donate")
 
+***Swift 4 support***
+
 **CameraEngine** *is an iOS camera engine library that allows easy integration of special capture features and camera customization in your iOS app.*
 
 <p align="center">
